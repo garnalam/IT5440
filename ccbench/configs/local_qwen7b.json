@@ -1,0 +1,77 @@
+{
+  "name": "local_qwen7b",
+  "_note": "IT5440 local run: qwen2.5-coder:7b (Q4_K_M) on Ollama, 24GB GPU. Same grid as configs/free_qwen7b.json plus oracle_trace. num_ctx=32768 covers the full repo (~26K est. tokens). max_output_tokens=1024 matches the published Claude runs.",
+  "dataset_version": "v1",
+  "models": [
+    {
+      "provider": "ollama_native",
+      "model": "qwen2.5-coder:7b",
+      "label": "qwen2.5-coder-7b",
+      "temperature": 0.0,
+      "seed": 0,
+      "num_ctx": 32768,
+      "timeout": 600
+    }
+  ],
+  "conditions": [
+    {
+      "strategy": "none"
+    },
+    {
+      "strategy": "oracle"
+    },
+    {
+      "strategy": "oracle_trace"
+    },
+    {
+      "strategy": "full",
+      "budgets": [
+        null,
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "fixed",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "bm25",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "bm25_namegraph",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "dgc",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    }
+  ],
+  "items": {},
+  "repeats": 1,
+  "max_output_tokens": 1024,
+  "concurrency": 1
+}

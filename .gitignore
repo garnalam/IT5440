@@ -1,0 +1,8 @@
+# logs của hàng đợi chạy (gom gửi về cùng kết quả, không commit đường dẫn máy cục bộ)
+logs/
+# môi trường / khoá (không cần cho chạy cục bộ, nhưng đừng commit nếu có)
+.env
+ccbench/.env
+# python
+__pycache__/
+*.pyc

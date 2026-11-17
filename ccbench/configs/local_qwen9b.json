@@ -1,0 +1,78 @@
+{
+  "name": "local_qwen9b",
+  "_note": "IT5440 local run: qwen3.5:9b on Ollama, 24GB GPU. think=false via native /api/chat (the /v1 endpoint ignores it). Same grid as local_qwen7b.",
+  "dataset_version": "v1",
+  "models": [
+    {
+      "provider": "ollama_native",
+      "model": "qwen3.5:9b",
+      "label": "qwen3.5-9b",
+      "temperature": 0.0,
+      "seed": 0,
+      "num_ctx": 32768,
+      "timeout": 600,
+      "think": false
+    }
+  ],
+  "conditions": [
+    {
+      "strategy": "none"
+    },
+    {
+      "strategy": "oracle"
+    },
+    {
+      "strategy": "oracle_trace"
+    },
+    {
+      "strategy": "full",
+      "budgets": [
+        null,
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "fixed",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "bm25",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "bm25_namegraph",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    },
+    {
+      "strategy": "dgc",
+      "budgets": [
+        2000,
+        4000,
+        8000,
+        16000
+      ]
+    }
+  ],
+  "items": {},
+  "repeats": 1,
+  "max_output_tokens": 1024,
+  "concurrency": 1
+}
