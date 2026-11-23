@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" font-family="system-ui, sans-serif" font-size="12">
+<rect width="100%" height="100%" fill="#fcfcfb"/>
+<text x="64" y="24" font-size="15" font-weight="600" fill="#0b0b0b">L3-L5 accuracy vs context budget - qwen2.5-coder-7b</text>
+<line x1="64" x2="590" y1="360.0" y2="360.0" stroke="#e4e3df"/>
+<text x="56" y="364.0" text-anchor="end" fill="#52514e">0%</text>
+<line x1="64" x2="590" y1="297.6" y2="297.6" stroke="#e4e3df"/>
+<text x="56" y="301.6" text-anchor="end" fill="#52514e">20%</text>
+<line x1="64" x2="590" y1="235.2" y2="235.2" stroke="#e4e3df"/>
+<text x="56" y="239.2" text-anchor="end" fill="#52514e">40%</text>
+<line x1="64" x2="590" y1="172.8" y2="172.8" stroke="#e4e3df"/>
+<text x="56" y="176.8" text-anchor="end" fill="#52514e">60%</text>
+<line x1="64" x2="590" y1="110.4" y2="110.4" stroke="#e4e3df"/>
+<text x="56" y="114.4" text-anchor="end" fill="#52514e">80%</text>
+<line x1="64" x2="590" y1="48.0" y2="48.0" stroke="#e4e3df"/>
+<text x="56" y="52.0" text-anchor="end" fill="#52514e">100%</text>
+<text x="64.0" y="380" text-anchor="middle" fill="#52514e">2K</text>
+<text x="239.3" y="380" text-anchor="middle" fill="#52514e">4K</text>
+<text x="414.7" y="380" text-anchor="middle" fill="#52514e">8K</text>
+<text x="590.0" y="380" text-anchor="middle" fill="#52514e">16K</text>
+<text x="327" y="400" text-anchor="middle" fill="#52514e">Context budget (estimated input tokens, log scale)</text>
+<text transform="translate(16,204) rotate(-90)" text-anchor="middle" fill="#52514e">Accuracy</text>
+<path d="M64.0 322.0 L239.3 329.6 L414.7 337.2 L590.0 337.2" fill="none" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="64.0" cy="322.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @2K: 12.2%</title></circle>
+<circle cx="239.3" cy="329.6" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @4K: 9.8%</title></circle>
+<circle cx="414.7" cy="337.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @8K: 7.3%</title></circle>
+<circle cx="590.0" cy="337.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @16K: 7.3%</title></circle>
+<path d="M64.0 322.0 L239.3 329.6 L414.7 322.0 L590.0 322.0" fill="none" stroke="#eb6834" stroke-width="2"/>
+<circle cx="64.0" cy="322.0" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @2K: 12.2%</title></circle>
+<circle cx="239.3" cy="329.6" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @4K: 9.8%</title></circle>
+<circle cx="414.7" cy="322.0" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @8K: 12.2%</title></circle>
+<circle cx="590.0" cy="322.0" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @16K: 12.2%</title></circle>
+<path d="M64.0 322.0 L239.3 314.3 L414.7 306.7 L590.0 322.0" fill="none" stroke="#1baf7a" stroke-width="2"/>
+<circle cx="64.0" cy="322.0" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @2K: 12.2%</title></circle>
+<circle cx="239.3" cy="314.3" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @4K: 14.6%</title></circle>
+<circle cx="414.7" cy="306.7" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @8K: 17.1%</title></circle>
+<circle cx="590.0" cy="322.0" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @16K: 12.2%</title></circle>
+<path d="M64.0 344.8 L239.3 344.8 L414.7 344.8 L590.0 322.0" fill="none" stroke="#eda100" stroke-width="2"/>
+<circle cx="64.0" cy="344.8" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @2K: 4.9%</title></circle>
+<circle cx="239.3" cy="344.8" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @4K: 4.9%</title></circle>
+<circle cx="414.7" cy="344.8" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @8K: 4.9%</title></circle>
+<circle cx="590.0" cy="322.0" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @16K: 12.2%</title></circle>
+<path d="M64.0 344.8 L239.3 337.2 L414.7 344.8 L590.0 344.8" fill="none" stroke="#e87ba4" stroke-width="2"/>
+<circle cx="64.0" cy="344.8" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @2K: 4.9%</title></circle>
+<circle cx="239.3" cy="337.2" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @4K: 7.3%</title></circle>
+<circle cx="414.7" cy="344.8" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @8K: 4.9%</title></circle>
+<circle cx="590.0" cy="344.8" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @16K: 4.9%</title></circle>
+<rect x="64" y="424" width="14" height="3" rx="1.5" fill="#2a78d6"/>
+<text x="82" y="428" fill="#0b0b0b">E5 DGC (proposed)</text>
+<rect x="209" y="424" width="14" height="3" rx="1.5" fill="#eb6834"/>
+<text x="227" y="428" fill="#0b0b0b">E4 BM25</text>
+<rect x="284" y="424" width="14" height="3" rx="1.5" fill="#1baf7a"/>
+<text x="302" y="428" fill="#0b0b0b">E4b BM25+name graph</text>
+<rect x="443" y="424" width="14" height="3" rx="1.5" fill="#eda100"/>
+<text x="461" y="428" fill="#0b0b0b">E2 Full (truncated)</text>
+<rect x="602" y="424" width="14" height="3" rx="1.5" fill="#e87ba4"/>
+<text x="620" y="428" fill="#0b0b0b">E3 Fixed files</text>
+</svg>

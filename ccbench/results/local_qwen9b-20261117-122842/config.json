@@ -1,0 +1,105 @@
+{
+  "experiment_id": "local_qwen9b-20261117-122842",
+  "created": "2026-11-17T12:28:42",
+  "config": {
+    "name": "local_qwen9b",
+    "_note": "IT5440 local run: qwen3.5:9b on Ollama, 24GB GPU. think=false via native /api/chat (the /v1 endpoint ignores it). Same grid as local_qwen7b.",
+    "dataset_version": "v1",
+    "models": [
+      {
+        "provider": "ollama_native",
+        "model": "qwen3.5:9b",
+        "label": "qwen3.5-9b",
+        "temperature": 0.0,
+        "seed": 0,
+        "num_ctx": 32768,
+        "timeout": 600,
+        "think": false
+      }
+    ],
+    "conditions": [
+      {
+        "strategy": "none"
+      },
+      {
+        "strategy": "oracle"
+      },
+      {
+        "strategy": "oracle_trace"
+      },
+      {
+        "strategy": "full",
+        "budgets": [
+          null,
+          2000,
+          4000,
+          8000,
+          16000
+        ]
+      },
+      {
+        "strategy": "fixed",
+        "budgets": [
+          2000,
+          4000,
+          8000,
+          16000
+        ]
+      },
+      {
+        "strategy": "bm25",
+        "budgets": [
+          2000,
+          4000,
+          8000,
+          16000
+        ]
+      },
+      {
+        "strategy": "bm25_namegraph",
+        "budgets": [
+          2000,
+          4000,
+          8000,
+          16000
+        ]
+      },
+      {
+        "strategy": "dgc",
+        "budgets": [
+          2000,
+          4000,
+          8000,
+          16000
+        ]
+      }
+    ],
+    "items": {},
+    "repeats": 1,
+    "max_output_tokens": 1024,
+    "concurrency": 1
+  },
+  "provenance": {
+    "ccbench_version": "1.0.0",
+    "prompt_version": "p1",
+    "dataset_version": "v1",
+    "dataset_sha256": "5e550060fea81413",
+    "fixture_hash": "8da947b42b62564d",
+    "repo_git_commit": "a9f1ad988988528fa2516f74440d3ccf7dbbfd16",
+    "chars_per_token_estimate": 2.35,
+    "python": "3.11.17",
+    "platform": "Linux-5.14.0-725.el9.x86_64-x86_64-with-glibc2.34",
+    "providers": {
+      "qwen3.5-9b": {
+        "model": "qwen3.5:9b",
+        "temperature": 0.0,
+        "seed": 0,
+        "unsupported": [],
+        "num_ctx": 32768,
+        "think": false,
+        "base_url": "http://localhost:11434"
+      }
+    },
+    "n_items": 64
+  }
+}

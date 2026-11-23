@@ -1,0 +1,88 @@
+{
+  "experiment_id": "local_smoke-20261117-102105",
+  "created": "2026-11-17T10:21:05",
+  "config": {
+    "name": "local_smoke",
+    "_note": "IT5440 smoke test: 4 items x 4 conditions x 2 models = 32 calls (~5 min). Verifies Ollama connectivity, GPU offload, think=false, JSON answers and scoring before the overnight queue.",
+    "dataset_version": "v1",
+    "models": [
+      {
+        "provider": "ollama_native",
+        "model": "qwen2.5-coder:7b",
+        "label": "qwen2.5-coder-7b",
+        "temperature": 0.0,
+        "seed": 0,
+        "num_ctx": 32768,
+        "timeout": 600
+      },
+      {
+        "provider": "ollama_native",
+        "model": "qwen3.5:9b",
+        "label": "qwen3.5-9b",
+        "temperature": 0.0,
+        "seed": 0,
+        "num_ctx": 32768,
+        "timeout": 600,
+        "think": false
+      }
+    ],
+    "conditions": [
+      {
+        "strategy": "none"
+      },
+      {
+        "strategy": "oracle"
+      },
+      {
+        "strategy": "full",
+        "budgets": [
+          null
+        ]
+      },
+      {
+        "strategy": "bm25",
+        "budgets": [
+          4000
+        ]
+      }
+    ],
+    "items": {
+      "limit": 4
+    },
+    "repeats": 1,
+    "max_output_tokens": 1024,
+    "concurrency": 1
+  },
+  "provenance": {
+    "ccbench_version": "1.0.0",
+    "prompt_version": "p1",
+    "dataset_version": "v1",
+    "dataset_sha256": "5e550060fea81413",
+    "fixture_hash": "8da947b42b62564d",
+    "repo_git_commit": "a9f1ad988988528fa2516f74440d3ccf7dbbfd16",
+    "chars_per_token_estimate": 2.35,
+    "python": "3.11.17",
+    "platform": "Linux-5.14.0-725.el9.x86_64-x86_64-with-glibc2.34",
+    "providers": {
+      "qwen2.5-coder-7b": {
+        "model": "qwen2.5-coder:7b",
+        "temperature": 0.0,
+        "seed": 0,
+        "unsupported": [],
+        "num_ctx": 32768,
+        "think": null,
+        "base_url": "http://localhost:11434"
+      },
+      "qwen3.5-9b": {
+        "model": "qwen3.5:9b",
+        "temperature": 0.0,
+        "seed": 0,
+        "unsupported": [],
+        "num_ctx": 32768,
+        "think": false,
+        "base_url": "http://localhost:11434"
+      }
+    },
+    "n_items": 4
+  }
+}

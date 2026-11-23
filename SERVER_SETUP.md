@@ -28,14 +28,38 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 **Cách B (không sudo, cài vào thư mục riêng):**
 
+Ollama bản mới phát hành dạng `.tar.zst` (cần `zstd`). Các URL `.tgz` cũ
+không còn tồn tại. Cài zstd theo distro:
+
+- **CentOS Stream / RHEL 9** (máy celldata): `sudo dnf install -y zstd`
+- Ubuntu/Debian: `sudo apt-get install -y zstd`
+- Không có sudo: lấy gói đóng gói sẵn từ conda-forge (`.tar.bz2`, giải nén
+  bằng tar thường, không cài vào hệ thống):
+
+```bash
+cd ~/ollama
+curl -fsSL -o zstd-pkg.tar.bz2 https://conda.anaconda.org/conda-forge/linux-64/zstd-1.5.2-h6239696_4.tar.bz2
+mkdir -p zstd-local
+tar xjf zstd-pkg.tar.bz2 -C zstd-local   # thiếu bzip2 thì dùng python3:
+# python3 -c "import bz2,sys; sys.stdout.buffer.write(bz2.open(sys.argv[1],'rb').read())" zstd-pkg.tar.bz2 | tar xf - -C zstd-local
+[ -e zstd-local/lib/libzstd.so.1 ] || ln -s libzstd.so.1.5.2 zstd-local/lib/libzstd.so.1
+export PATH="$HOME/ollama/zstd-local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/ollama/zstd-local/lib:${LD_LIBRARY_PATH:-}"
+```
+
 ```bash
 mkdir -p ~/ollama && cd ~/ollama
-curl -fsSL -o ollama.tgz https://ollama.com/download/ollama-linux-amd64.tgz
-tar xzf ollama.tgz
+curl -fsSL -o ollama.tar.zst https://ollama.com/download/ollama-linux-amd64.tar.zst
+zstd -dc ollama.tar.zst | tar xf -
+export PATH=$HOME/ollama/bin:$PATH   # thêm vào ~/.bashrc hoặc ~/.zshrc
 # chạy server (để cửa sổ này mở, hoặc dùng tmux/nohup):
-OLLAMA_FLASH_ATTENTION=1 OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 \
-  ~/ollama/bin/ollama serve
+CUDA_VISIBLE_DEVICES=0 OLLAMA_FLASH_ATTENTION=1 OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 \
+  ollama serve
 ```
+
+Máy có nhiều GPU (celldata: 2× L4 24GB): `CUDA_VISIBLE_DEVICES=0` ghim Ollama
+vào GPU 0, để GPU 1 trống. Muốn chạy song song hai model trên hai GPU thì
+mở hai server Ollama cổng khác nhau — hỏi người chuẩn bị repo, không tự làm.
 
 Với cách A, đặt các biến môi trường trên cho service rồi khởi động lại:
 
@@ -51,6 +75,18 @@ sudo systemctl restart ollama
 Ý nghĩa: `NUM_PARALLEL=1` — mỗi lúc một truy vấn (khớp thiết kế thí nghiệm,
 temperature 0); `MAX_LOADED_MODELS=1` — chỉ giữ 1 model trong VRAM;
 `FLASH_ATTENTION=1` — giảm bộ nhớ KV cache cho cửa sổ 32K.
+
+**Bẫy trên máy celldata:** biến môi trường đặt sẵn `OLLAMA_MODELS=/dev/ollama/models`
+làm server chết ngay khi khởi động (`mkdir /dev/ollama: permission denied`).
+Phải đè bằng thư mục của mình trong lệnh serve:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 OLLAMA_MODELS=$HOME/ollama/models \
+  OLLAMA_FLASH_ATTENTION=1 OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 ollama serve
+```
+
+và thêm `export OLLAMA_MODELS=$HOME/ollama/models` vào `~/.bashrc`.
+Model sẽ nằm ở `~/ollama/models` (ổ `/`, kiểm tra `df -h /` còn trống ≥ 25GB).
 
 Kiểm tra server sống:
 

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" font-family="system-ui, sans-serif" font-size="12">
+<rect width="100%" height="100%" fill="#fcfcfb"/>
+<text x="64" y="24" font-size="15" font-weight="600" fill="#0b0b0b">Accuracy vs context budget - qwen2.5-coder-7b (n=64 items)</text>
+<line x1="64" x2="590" y1="360.0" y2="360.0" stroke="#e4e3df"/>
+<text x="56" y="364.0" text-anchor="end" fill="#52514e">0%</text>
+<line x1="64" x2="590" y1="297.6" y2="297.6" stroke="#e4e3df"/>
+<text x="56" y="301.6" text-anchor="end" fill="#52514e">20%</text>
+<line x1="64" x2="590" y1="235.2" y2="235.2" stroke="#e4e3df"/>
+<text x="56" y="239.2" text-anchor="end" fill="#52514e">40%</text>
+<line x1="64" x2="590" y1="172.8" y2="172.8" stroke="#e4e3df"/>
+<text x="56" y="176.8" text-anchor="end" fill="#52514e">60%</text>
+<line x1="64" x2="590" y1="110.4" y2="110.4" stroke="#e4e3df"/>
+<text x="56" y="114.4" text-anchor="end" fill="#52514e">80%</text>
+<line x1="64" x2="590" y1="48.0" y2="48.0" stroke="#e4e3df"/>
+<text x="56" y="52.0" text-anchor="end" fill="#52514e">100%</text>
+<text x="64.0" y="380" text-anchor="middle" fill="#52514e">2K</text>
+<text x="239.3" y="380" text-anchor="middle" fill="#52514e">4K</text>
+<text x="414.7" y="380" text-anchor="middle" fill="#52514e">8K</text>
+<text x="590.0" y="380" text-anchor="middle" fill="#52514e">16K</text>
+<text x="327" y="400" text-anchor="middle" fill="#52514e">Context budget (estimated input tokens, log scale)</text>
+<text transform="translate(16,204) rotate(-90)" text-anchor="middle" fill="#52514e">Accuracy</text>
+<line x1="64" x2="590" y1="243.0" y2="243.0" stroke="#52514e" stroke-width="1.5" stroke-dasharray="5 4"><title>E0 Oracle: 37.5%</title></line>
+<text x="598" y="247.0" fill="#52514e">E0 Oracle 38%</text>
+<line x1="64" x2="590" y1="316.1" y2="316.1" stroke="#52514e" stroke-width="1.5" stroke-dasharray="5 4"><title>E2 Full (whole repo): 14.1%</title></line>
+<text x="598" y="320.1" fill="#52514e">E2 Full (whole repo) 14%</text>
+<line x1="64" x2="590" y1="345.4" y2="345.4" stroke="#52514e" stroke-width="1.5" stroke-dasharray="5 4"><title>E1 None: 4.7%</title></line>
+<text x="598" y="349.4" fill="#52514e">E1 None 5%</text>
+<path d="M64.0 316.1 L239.3 311.2 L414.7 316.1 L590.0 330.3" fill="none" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="64.0" cy="316.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @2K: 14.1%</title></circle>
+<circle cx="239.3" cy="311.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @4K: 15.6%</title></circle>
+<circle cx="414.7" cy="316.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @8K: 14.1%</title></circle>
+<circle cx="590.0" cy="330.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>E5 DGC (proposed) @16K: 9.5%</title></circle>
+<path d="M64.0 301.5 L239.3 306.4 L414.7 306.4 L590.0 301.5" fill="none" stroke="#eb6834" stroke-width="2"/>
+<circle cx="64.0" cy="301.5" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @2K: 18.8%</title></circle>
+<circle cx="239.3" cy="306.4" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @4K: 17.2%</title></circle>
+<circle cx="414.7" cy="306.4" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @8K: 17.2%</title></circle>
+<circle cx="590.0" cy="301.5" r="4.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>E4 BM25 @16K: 18.8%</title></circle>
+<path d="M64.0 301.5 L239.3 296.6 L414.7 296.6 L590.0 311.2" fill="none" stroke="#1baf7a" stroke-width="2"/>
+<circle cx="64.0" cy="301.5" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @2K: 18.8%</title></circle>
+<circle cx="239.3" cy="296.6" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @4K: 20.3%</title></circle>
+<circle cx="414.7" cy="296.6" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @8K: 20.3%</title></circle>
+<circle cx="590.0" cy="311.2" r="4.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>E4b BM25+name graph @16K: 15.6%</title></circle>
+<path d="M64.0 345.4 L239.3 345.4 L414.7 335.6 L590.0 306.4" fill="none" stroke="#eda100" stroke-width="2"/>
+<circle cx="64.0" cy="345.4" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @2K: 4.7%</title></circle>
+<circle cx="239.3" cy="345.4" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @4K: 4.7%</title></circle>
+<circle cx="414.7" cy="335.6" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @8K: 7.8%</title></circle>
+<circle cx="590.0" cy="306.4" r="4.5" fill="#eda100" stroke="#fcfcfb" stroke-width="2"><title>E2 Full (truncated) @16K: 17.2%</title></circle>
+<path d="M64.0 345.4 L239.3 335.6 L414.7 335.6 L590.0 335.6" fill="none" stroke="#e87ba4" stroke-width="2"/>
+<circle cx="64.0" cy="345.4" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @2K: 4.7%</title></circle>
+<circle cx="239.3" cy="335.6" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @4K: 7.8%</title></circle>
+<circle cx="414.7" cy="335.6" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @8K: 7.8%</title></circle>
+<circle cx="590.0" cy="335.6" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"><title>E3 Fixed files @16K: 7.8%</title></circle>
+<rect x="64" y="424" width="14" height="3" rx="1.5" fill="#2a78d6"/>
+<text x="82" y="428" fill="#0b0b0b">E5 DGC (proposed)</text>
+<rect x="209" y="424" width="14" height="3" rx="1.5" fill="#eb6834"/>
+<text x="227" y="428" fill="#0b0b0b">E4 BM25</text>
+<rect x="284" y="424" width="14" height="3" rx="1.5" fill="#1baf7a"/>
+<text x="302" y="428" fill="#0b0b0b">E4b BM25+name graph</text>
+<rect x="443" y="424" width="14" height="3" rx="1.5" fill="#eda100"/>
+<text x="461" y="428" fill="#0b0b0b">E2 Full (truncated)</text>
+<rect x="602" y="424" width="14" height="3" rx="1.5" fill="#e87ba4"/>
+<text x="620" y="428" fill="#0b0b0b">E3 Fixed files</text>
+</svg>

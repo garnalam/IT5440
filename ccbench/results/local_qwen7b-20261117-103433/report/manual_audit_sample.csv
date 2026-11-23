@@ -1,0 +1,364 @@
+job_key,item_id,model,strategy,budget,gold_answer,pred_answer,auto_correct,auto_error_class,raw_response,human_verdict,human_note
+fd8cec2d98782085,L1-10,qwen2.5-coder-7b,full,8000,260,80,False,missing_evidence,"{
+  ""answer"": 80,
+  ""evidence"": [""frostline/domain/validation.py:10-11""],
+  ""explanation"": ""The girth function calculates the sum of the width and height of the parcel, which is 30 + 50 = 80 cm.""
+}",,
+8b8e0a321701be2b,L1-11,qwen2.5-coder-7b,bm25,16000,"""5.6000""","""5.60""",True,correct,"{
+  ""answer"": ""5.60"",
+  ""evidence"": [
+    ""frostline/pricing/discounts.py:10"",
+    ""frostline/pricing/discounts.py:22"",
+    ""frostline/pricing/discounts.py:27"",
+    ""frostline/pricing/discounts.py:38"",
+    ""frostline/pricing/discounts.py:40"",
+    ""frostline/pricing/discounts.py:42""
+  ],
+  ""explanation"": ""The loyalty discount is 5.60 (80.00 * 0.07) and the promo discount is 5.00 (FREEZE5 fixed discount). Since stacking is False, the larger discount (loyalty) is applied, resulting in a total discount of 5.60.""
+}",,
+83335d703b92aca3,L2-09,qwen2.5-coder-7b,full,16000,"""ok""","""200""",False,missing_evidence,"```json
+{
+  ""answer"": ""200"",
+  ""evidence"": [
+    ""frostline/api/warehouse_handlers.py:22"",
+    ""frostline/api/warehouse_handlers.py:23"",
+    ""frostline/api/warehouse_handlers.py:24"",
+    ""frostline/api/warehouse_handlers.py:25"",
+    ""frostline/api/warehouse_handlers.py:26"",
+    ""frostline/api/warehouse_handlers.py:27""
+  ],
+  ""explanation"": ""The POST /storage/compliance endpoint returns a 200 status code. The function post_compliance in frostline/api/warehouse_handlers.py processes the request and returns a dictionary with a 'status' key set to the result of the compliance_status function, whic",,
+7b93dc3c8960d568,L2-03,qwen2.5-coder-7b,full,,"""2.0000""","""2.00""",True,correct,"{
+  ""answer"": ""2.00"",
+  ""evidence"": [
+    ""frostline/pricing/discounts.py:30"",
+    ""frostline/pricing/discounts.py:31"",
+    ""frostline/pricing/discounts.py:32"",
+    ""frostline/pricing/discounts.py:33"",
+    ""frostline/pricing/discounts.py:34"",
+    ""frostline/pricing/discounts.py:35""
+  ],
+  ""explanation"": ""The apply_discount function calculates discounts based on loyalty and promo codes. For a 'silver' customer and the 'icebox' promo code, the loyalty discount is 3% and the promo discount is 4%. The larger discount of 4% is applied, resulting in a total discount of 2.00 for a subtotal of 50.00.""",,
+74a352f3a349bbf7,L3-10,qwen2.5-coder-7b,bm25,2000,"[""notify_booking"", ""audit_booking""]","[""audit_booking""]",False,missing_evidence,"{
+  ""answer"": [""audit_booking""],
+  ""evidence"": [""frostline/services/audit_service.py:12-14""],
+  ""explanation"": ""The 'shipment.booked' event is handled by the 'audit_booking' function in the 'audit_service.py' file. This is because the function is decorated with '@subscribe(\""shipment.booked\"")', which registers it as a handler for the 'shipment.booked' event.""
+}",,
+e47649d1bed9583b,L3-06,qwen2.5-coder-7b,fixed,4000,"[""fragile"", ""fuel"", ""remote""]","[""fuel"", ""remote"", ""fragile""]",True,correct,"{
+  ""answer"": [""fuel"", ""remote"", ""fragile""],
+  ""evidence"": [""frostline/config/settings.py:17"", ""frostline/core/container.py:27"", ""frostline/pricing/quote_engine.py:24""],
+  ""explanation"": ""The default profile in settings.py enables 'fuel', 'remote', and 'fragile' surcharges. These surcharges are resolved and applied in the quote_engine.py file.""
+}",,
+823e22c37f27f240,L4-10,qwen2.5-coder-7b,bm25_namegraph,16000,"""provincial-health-office@email""","""HUE""",False,missing_evidence,"{
+  ""answer"": ""HUE"",
+  ""evidence"": [
+    ""frostline/services/shipment_service.py:29"",
+    ""frostline/services/shipment_service.py:30"",
+    ""frostline/services/shipment_service.py:31"",
+    ""frostline/services/shipment_service.py:32"",
+    ""frostline/services/shipment_service.py:33"",
+    ""frostline/services/shipment_service.py:34""
+  ],
+  ""explanation"": ""The 'to' column of the outbox row is set to the destination of the shipment, which is 'HUE' in the provided request.""
+}",,
+5cac5979eb529347,L4-08,qwen2.5-coder-7b,full,16000,"""10.0""","""10.0""",True,correct,"{
+  ""answer"": ""10.0"",
+  ""evidence"": [
+    ""frostline/api/serializers.py:12"",
+    ""frostline/api/serializers.py:13"",
+    ""frostline/api/serializers.py:14"",
+    ""frostline/api/serializers.py:15"",
+    ""frostline/api/serializers.py:16"",
+    ""frostline/api/serializers.py:17""
+  ],
+  ""explanation"": ""The weight is converted from pounds to kilograms using the to_kg function, which divides the weight by 2.20462.""
+}",,
+5454fa3a3a220e10,L5-06,qwen2.5-coder-7b,bm25_namegraph,2000,[],"[""S1"", ""S4""]",False,missing_evidence,"```json
+{
+  ""answer"": [""S1"", ""S4""],
+  ""evidence"": [""frostline/domain/rules/remote.py:10"", ""frostline/domain/rules/remote.py:16""],
+  ""explanation"": ""Scenarios S1 and S4 involve creating shipments, which trigger the calculation of surcharges. The `RemoteAreaRule.amount` method is called during this process, and its return value is used to calculate the total surcharge. Since the method now returns exactly 1 more than it currently does, the total surcharge for these scenarios will be 1 more than expected.""
+}
+```",,
+f26fa7c732904284,L5-02,qwen2.5-coder-7b,bm25,2000,"[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]","[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]",True,correct,"```json
+{
+  ""answer"": [""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""],
+  ""evidence"": [
+    ""frostline/pricing/money.py:10"",
+    ""frostline/legacy/pricing_v1.py:28"",
+    ""frostline/api/app.py:34"",
+    ""frostline/api/serializers.py:27"",
+    ""frostline/storage/storage_fees.py:5"",
+    ""frostline/billing/billing_service.py:12""
+  ],
+  ""explanation"": ""The modified `round_money` function will increase the returned value by 1 in all scenarios where it is used, including quote calculations, shipment pricing, storage fees, and billing.""
+}
+```",,
+34a670f579bfadd0,L1-04,qwen2.5-coder-7b,oracle_trace,,"""8.75""","""12.25""",False,use_failure,"{
+  ""answer"": ""12.25"",
+  ""evidence"": [""frostline/routing/fees.py:11"", ""frostline/routing/fees.py:12""],
+  ""explanation"": ""The function calculates the fee for a distance of 350 km. It first determines the billable distance by subtracting the toll-free kilometers (100 km) from the total distance (350 km), resulting in 250 km. Then, it multiplies the billable distance by the toll per kilometer (0.035) and rounds the result to two decimal places, resulting in 12.25.""
+}",,
+28e4b8c586ee2b5b,L1-01,qwen2.5-coder-7b,full,,"""2.60""","""2.60""",True,correct,"{
+  ""answer"": ""2.60"",
+  ""evidence"": [
+    ""frostline/pricing/strategies.py:32"",
+    ""frostline/pricing/strategies.py:33"",
+    ""frostline/pricing/strategies.py:34"",
+    ""frostline/pricing/strategies.py:37"",
+    ""frostline/pricing/strategies.py:38"",
+    ""frostline/pricing/strategies.py:40""
+  ],
+  ""explanation"": ""The TieredStrategy class defines a list of tiers with upper bounds and rates. For a chargeable weight of exactly 20 kg, it falls into the second tier, which has a rate of 2.60 per kg.""
+}",,
+4db1d8cd348b474a,L2-06,qwen2.5-coder-7b,fixed,4000,"""45.60""","""0""",False,missing_evidence,"```json
+{
+  ""answer"": ""0"",
+  ""evidence"": [""frostline/api/handlers.py:19-25""],
+  ""explanation"": ""The POST /storage/estimate endpoint is not defined in the provided code. The closest endpoint is POST /shipments, which returns a 'total' field. However, the body provided does not match the expected format for the /shipments endpoint. Therefore, the answer is 0, as there is no valid endpoint to handle the given request.""
+}
+```",,
+3288fe874e68a563,L2-09,qwen2.5-coder-7b,oracle_trace,,"""ok""","""ok""",True,correct,"{
+  ""answer"": ""ok"",
+  ""evidence"": [
+    ""frostline/warehouse/sensors.py:38"",
+    ""frostline/warehouse/sensors.py:40"",
+    ""frostline/warehouse/sensors.py:41"",
+    ""frostline/warehouse/sensors.py:42"",
+    ""frostline/warehouse/sensors.py:43"",
+    ""frostline/warehouse/sensors.py:44""
+  ],
+  ""explanation"": ""The readings are within the 'FRZ' zone's temperature range, so no excursions are found, and the compliance status is 'ok'.""
+}",,
+24d5dea155210f3e,L3-02,qwen2.5-coder-7b,fixed,8000,"""6.65""","""0.00""",False,missing_evidence,"{
+  ""answer"": ""0.00"",
+  ""evidence"": [""frostline/api/handlers.py:32"", ""frostline/pricing/quote_engine.py:7"", ""frostline/pricing/strategies.py:28"", ""frostline/pricing/strategies.py:37"", ""frostline/pricing/strategies.py:44"", ""frostline/pricing/strategies.py:49""],
+  ""explanation"": ""The toll value is calculated based on the distance between the origin and destination. Since the distance is not provided in the input, the default toll value is 0.00.""
+}",,
+ebf8ef390b73669d,L3-11,qwen2.5-coder-7b,none,,0,0,True,correct,"```json
+{
+  ""answer"": 0,
+  ""evidence"": [],
+  ""explanation"": ""No fuel surcharge is applied under the 'eco' profile for a shipment from HAN to HUE.""
+}
+```",,
+e54dce16c5ab4d12,L4-06,qwen2.5-coder-7b,fixed,16000,"""56.63""","""12.50""",False,missing_evidence,"{
+  ""answer"": ""12.50"",
+  ""evidence"": [
+    ""frostline/pricing/strategies.py:24"",
+    ""frostline/pricing/strategies.py:25"",
+    ""frostline/pricing/strategies.py:28"",
+    ""frostline/pricing/strategies.py:30"",
+    ""frostline/pricing/strategies.py:32"",
+    ""frostline/pricing/strategies.py:35""
+  ],
+  ""explanation"": ""The 'flat' pricing strategy is used, which charges a base rate of $2.40 per kg. The total charge for a 5 kg parcel is calculated as $2.40 * 5 = $12.00. Since the minimum charge is $12.50, the total is rounded up to $12.50.""
+}",,
+b6835fa685d8679b,L4-08,qwen2.5-coder-7b,bm25,16000,"""10.0""","""10.0""",True,correct,"{
+  ""answer"": ""10.0"",
+  ""evidence"": [
+    ""frostline/domain/units.py:12-14"",
+    ""frostline/api/serializers.py:13-16"",
+    ""frostline/api/handlers.py:11-13"",
+    ""frostline/services/quote_service.py:15-17"",
+    ""frostline/pricing/quote_engine.py:16-19"",
+    ""frostline/pricing/strategies.py:13-15""
+  ],
+  ""explanation"": ""The weight is converted from pounds to kilograms using the to_kg function in units.py. The resulting weight_kg is then used in the quote calculation.""
+}",,
+c85386de31b6963b,L5-13,qwen2.5-coder-7b,full,16000,"[""S8""]","[""S4""]",False,missing_evidence,"```json
+{
+  ""answer"": [""S4""],
+  ""evidence"": [""frostline/tax/policies.py:10"", ""frostline/tax/policies.py:12"", ""frostline/tax/policies.py:14"", ""frostline/tax/policies.py:16"", ""frostline/tax/policies.py:18"", ""frostline/tax/policies.py:20""],
+  ""explanation"": ""The modified `ExemptTax.tax` method increases the tax amount by 1. This change affects the total cost in scenarios involving tax calculations, such as S4 where an invoice is created.""
+}
+```",,
+d512725df4bf1cd3,L5-04,qwen2.5-coder-7b,bm25_namegraph,2000,"[""S4""]","[""S4""]",True,correct,"```json
+{
+  ""answer"": [""S4""],
+  ""evidence"": [""frostline/billing/fees.py:6-12""],
+  ""explanation"": ""The `calculate_fee` function is called in the `POST /invoices` endpoint of scenario S4. Modifying this function to return exactly 1 more than it currently returns will affect the output of this scenario.""
+}
+```",,
+2c597e6beff95ca3,L1-02,qwen2.5-coder-7b,bm25,16000,"""5.5""","""2.2""",False,use_failure,"{
+  ""answer"": ""2.2"",
+  ""evidence"": [""frostline/domain/units.py:38"", ""frostline/domain/units.py:39"", ""frostline/domain/units.py:40"", ""frostline/domain/units.py:41""],
+  ""explanation"": ""The chargeable_weight function returns the maximum of the parcel's actual weight and its volumetric weight, rounded up to the nearest 0.5 kg. For a parcel of 2.2 kg, the volumetric weight is 0.027 kg (30*30*30 / 5000), which is less than the actual weight. Therefore, the function returns the actual weight of 2.2 kg.""
+}",,
+2ecab36d35bdbe9e,L1-05,qwen2.5-coder-7b,bm25_namegraph,16000,"""COLD10""","""COLD10""",True,correct,"```json
+{
+  ""answer"": ""COLD10"",
+  ""evidence"": [""frostline/utils/text.py:10"", ""frostline/utils/text.py:11""],
+  ""explanation"": ""The normalize_code function removes dashes and spaces and converts the input to uppercase.""
+}
+```",,
+3352be3e8baea60c,L2-04,qwen2.5-coder-7b,fixed,2000,680,"""1200""",False,missing_evidence,"{
+  ""answer"": ""1200"",
+  ""evidence"": [
+    ""frostline/config/settings.py:10-26"",
+    ""frostline/routing/dijkstra.py:10-20""
+  ],
+  ""explanation"": ""The default network settings specify a distance of 1200 km between depots HAN and HUE. The DijkstraEngine uses these settings to compute the distance.""
+}",,
+d0a289546231d47a,L2-09,qwen2.5-coder-7b,bm25,16000,"""ok""","""ok""",True,correct,"```json
+{
+  ""answer"": ""ok"",
+  ""evidence"": [
+    ""frostline/warehouse/sensors.py:39"",
+    ""frostline/warehouse/sensors.py:40"",
+    ""frostline/warehouse/sensors.py:41"",
+    ""frostline/warehouse/sensors.py:42"",
+    ""frostline/warehouse/sensors.py:43"",
+    ""frostline/warehouse/sensors.py:44""
+  ],
+  ""explanation"": ""The readings are within the zone range for 'seafood' (FRZ), so no excursions are found, and the worst reading is not greater than 5 degrees Celsius, resulting in a 'ok' status.""
+}
+```",,
+c9880d4ed2ac8691,L3-08,qwen2.5-coder-7b,fixed,2000,"[""audit"", ""quotes""]","[""quote""]",False,missing_evidence,"{
+  ""answer"": [""quote""],
+  ""evidence"": [""frostline/api/app.py:32"", ""frostline/api/app.py:33"", ""frostline/api/app.py:34"", ""frostline/api/app.py:35"", ""frostline/api/app.py:36"", ""frostline/api/app.py:37""],
+  ""explanation"": ""The POST /quotes endpoint is handled by the QuoteService, which interacts with the database through the container. The QuoteService is responsible for creating new quotes, which would result in new rows being inserted into the 'quote' table.""
+}",,
+b47a1a39196e2193,L3-06,qwen2.5-coder-7b,full,,"[""fragile"", ""fuel"", ""remote""]","[""fuel"", ""remote"", ""fragile""]",True,correct,"```json
+{
+  ""answer"": [""fuel"", ""remote"", ""fragile""],
+  ""evidence"": [""frostline/config/profiles.py:6"", ""frostline/config/profiles.py:7"", ""frostline/config/profiles.py:8"", ""frostline/config/profiles.py:9"", ""frostline/config/profiles.py:10"", ""frostline/config/profiles.py:11""],
+  ""explanation"": ""The default profile in frostline/config/profiles.py specifies that the surcharge codes 'fuel', 'remote', and 'fragile' are enabled.""
+}
+```",,
+3a6adbd6e889fcfa,L4-04,qwen2.5-coder-7b,bm25,2000,"""2.15""","""0.00""",False,missing_evidence,"{
+  ""answer"": ""0.00"",
+  ""evidence"": [
+    ""frostline/pricing/quote_engine.py:38"",
+    ""frostline/pricing/quote_engine.py:39""
+  ],
+  ""explanation"": ""The tax is calculated as the tax policy applied to the taxable amount. In the default profile, there are no applicable surcharges or discounts, so the taxable amount is equal to the subtotal, and the tax is 0.00.""
+}",,
+2a868c9f3789e250,L4-08,qwen2.5-coder-7b,full,,"""10.0""","""10.0""",True,correct,"{
+  ""answer"": ""10.0"",
+  ""evidence"": [
+    ""frostline/api/serializers.py:10"",
+    ""frostline/api/serializers.py:12"",
+    ""frostline/api/serializers.py:13"",
+    ""frostline/api/serializers.py:14"",
+    ""frostline/api/serializers.py:15"",
+    ""frostline/api/serializers.py:16""
+  ],
+  ""explanation"": ""The weight is converted from pounds to kilograms using the to_kg function, which multiplies the weight by the conversion factor of 2.20462.""
+}",,
+62d6b72610f63545,L5-12,qwen2.5-coder-7b,fixed,8000,"[""S2""]",[],False,missing_evidence,"```json
+{
+  ""answer"": [],
+  ""evidence"": [],
+  ""explanation"": ""The `normalize_code` function in frostline/utils/text.py is not used in any of the provided scenarios. Therefore, modifying it would not affect the observable output of these scenarios.""
+}
+```",,
+243d1b1751a9ea63,L5-02,qwen2.5-coder-7b,full,16000,"[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]","[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]",True,correct,"```json
+{
+  ""answer"": [""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""],
+  ""evidence"": [
+    ""frostline/pricing/money.py:15"",
+    ""frostline/pricing/money.py:28"",
+    ""frostline/pricing/money.py:32"",
+    ""frostline/pricing/money.py:36"",
+    ""frostline/pricing/money.py:40"",
+    ""frostline/pricing/money.py:44""
+  ],
+  ""explanation"": ""The `round_money` function is used in various places to round monetary values. Modifying it to return exactly 1 more than it currently returns will affect all scenarios that use this function, including those that calculate quotes, shipments, invoices, storage estimates, and reve",,
+b9f38689b130bd48,L1-04,qwen2.5-coder-7b,bm25_namegraph,4000,"""8.75""","""11.50""",False,use_failure,"{
+  ""answer"": ""11.50"",
+  ""evidence"": [""frostline/routing/fees.py:11"", ""frostline/routing/fees.py:12"", ""frostline/routing/fees.py:13""],
+  ""explanation"": ""The function calculate_fee(350) calculates the toll fee for a distance of 350 km. It first determines the billable distance by subtracting the toll-free kilometers (100 km) from the total distance (350 km), resulting in 250 km. It then calculates the fee by multiplying the billable distance by the toll per kilometer (0.035) and rounding the result to two decimal places, which gives 11.50.""
+}",,
+98f1888f826a40fe,L1-11,qwen2.5-coder-7b,bm25,4000,"""5.6000""","""5.60""",True,correct,"{
+  ""answer"": ""5.60"",
+  ""evidence"": [
+    ""frostline/pricing/discounts.py:10"",
+    ""frostline/pricing/discounts.py:16"",
+    ""frostline/pricing/discounts.py:21"",
+    ""frostline/pricing/discounts.py:27"",
+    ""frostline/pricing/discounts.py:38"",
+    ""frostline/config/settings.py:19""
+  ],
+  ""explanation"": ""The loyalty discount is 5.60 (80.00 * 0.07) and the promo discount is 5.00 (FREEZE5 fixed discount). Since stacking is disabled, the larger discount (loyalty) is applied, resulting in a total discount of 5.60.""
+}",,
+ba402c3862046df4,L2-01,qwen2.5-coder-7b,full,2000,"""7.5""","""4""",False,missing_evidence,"```json
+{
+  ""answer"": ""4"",
+  ""evidence"": [""frostline/services/quote_service.py:123-125""],
+  ""explanation"": ""The chargeable weight is determined by the weight of the parcel, which is 4 kg.""
+}
+```",,
+c6aab745a0a2e9dd,L2-07,qwen2.5-coder-7b,none,,"""4.990""","""4.99""",True,correct,"```json
+{
+  ""answer"": ""4.99"",
+  ""evidence"": [],
+  ""explanation"": ""The weight_kg value is calculated by converting the weight from pounds to kilograms using the formula weight_kg = weight_lb * 0.453592. With weight_lb = 11, weight_kg = 11 * 0.453592 = 4.99.""
+}
+```",,
+c133cebb02fd22da,L3-09,qwen2.5-coder-7b,bm25,16000,"[""audit"", ""outbox"", ""shipments""]","[""memory_db.py:11"", ""memory_db.py:14"", ""memory_db.py:17""]",False,missing_evidence,"```json
+{
+  ""answer"": [""memory_db.py:11"", ""memory_db.py:14"", ""memory_db.py:17""],
+  ""evidence"": [""frostline/storage/memory_db.py:11"", ""frostline/storage/memory_db.py:14"", ""frostline/storage/memory_db.py:17""],
+  ""explanation"": ""The POST /shipments endpoint in frostline/api/handlers.py calls app.shipment_service.book(parse_shipment(body)), which in turn calls self.shipments.save(shipment, quote, path) in frostline/services/shipment_service.py. This method inserts a new row into the 'shipments' table in memory_db.py.""
+}
+```",,
+6e3cf0bcfa8bd1f2,L3-06,qwen2.5-coder-7b,dgc,16000,"[""fragile"", ""fuel"", ""remote""]","[""fuel"", ""remote"", ""fragile""]",True,correct,"```json
+{
+  ""answer"": [""fuel"", ""remote"", ""fragile""],
+  ""evidence"": [
+    ""frostline/config/profiles.py:13"",
+    ""frostline/config/profiles.py:14"",
+    ""frostline/config/profiles.py:15"",
+    ""frostline/config/profiles.py:16"",
+    ""frostline/config/profiles.py:17"",
+    ""frostline/config/profiles.py:18""
+  ],
+  ""explanation"": ""The default profile in frostline/config/profiles.py specifies that the 'surcharge.enabled' setting includes 'fuel', 'remote', and 'fragile'. These are the only surcharge codes that can appear in the 'surcharges' of a quote with the default profile.""
+}
+```",,
+20cb87b6128036b7,L4-05,qwen2.5-coder-7b,bm25,8000,"[""express"", ""fuel"", ""hazmat""]","[""express"", ""hazmat""]",False,missing_evidence,"{
+  ""answer"": [""express"", ""hazmat""],
+  ""evidence"": [
+    ""frostline/plugins/express.py:11"",
+    ""frostline/plugins/hazmat.py:11"",
+    ""frostline/api/serializers.py:44"",
+    ""frostline/pricing/quote_engine.py:24"",
+    ""frostline/pricing/quote_engine.py:27"",
+    ""frostline/pricing/quote_engine.py:30""
+  ],
+  ""explanation"": ""The 'express' profile enables the 'express' and 'hazmat' surcharges. The 'express' surcharge is applied because the service is 'express'. The 'hazmat' surcharge is applied because one of the parcels is marked as hazmat.""
+}",,
+694e50b8f93f014e,L4-08,qwen2.5-coder-7b,bm25_namegraph,16000,"""10.0""","""10.0""",True,correct,"{
+  ""answer"": ""10.0"",
+  ""evidence"": [
+    ""frostline/domain/units.py:12-14"",
+    ""frostline/api/serializers.py:13-14"",
+    ""frostline/api/serializers.py:27-28"",
+    ""frostline/api/serializers.py:30-31"",
+    ""frostline/api/serializers.py:33-34"",
+    ""frostline/api/serializers.py:36-37""
+  ],
+  ""explanation"": ""The weight is converted from pounds to kilograms using the to_kg function in units.py. The conversion factor is 2.20462, so 22 pounds is approximately 10.0 kilograms.""
+}",,
+f761d30432d892b1,L5-15,qwen2.5-coder-7b,fixed,16000,[],"[""S3""]",False,missing_evidence,"```json
+{
+  ""answer"": [""S3""],
+  ""evidence"": [""frostline/api/handlers.py:29"", ""frostline/routing/engines.py:100""],
+  ""explanation"": ""The GET /routes scenario depends on the order of routes returned by GreedyEngine.path. Reversing the order of routes will change the output of this scenario.""
+}
+```",,
+0b49109e2ac6baf2,L5-02,qwen2.5-coder-7b,bm25_namegraph,8000,"[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]","[""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""]",True,correct,"```json
+{
+  ""answer"": [""S1"", ""S2"", ""S4"", ""S5"", ""S6"", ""S8""],
+  ""evidence"": [
+    ""frostline/pricing/money.py:5"",
+    ""frostline/pricing/money.py:6"",
+    ""frostline/pricing/money.py:10"",
+    ""frostline/pricing/money.py:11"",
+    ""frostline/pricing/money.py:15"",
+    ""frostline/pricing/money.py:16""
+  ],
+  ""explanation"": ""The `round_money` function is used in multiple places to round monetary values. Modifying it to return exactly 1 more than it currently returns will affect all scenarios that use this function, including those that calculate quotes, invoices, storage fees, and revenue reports.""
+}
+`",,

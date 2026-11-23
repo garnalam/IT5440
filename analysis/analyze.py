@@ -99,8 +99,9 @@ def gather():
             if is_local and r.get("status") == "ok":
                 extra = r.get("provider_extra") or {}
                 itok = r.get("input_tokens") or 0
-                if r["strategy"] == "full" and r["budget"] is None and itok and itok < 20000:
-                    meta["guards"].append("possible silent prompt truncation: %s %s input=%d" % (label, r["item_id"], itok))
+                if r["strategy"] == "full" and r["budget"] is None and (r.get("scores") or {}).get("context_recall", 1.0) < 1.0:
+                    # gold units missing from the full-repo prompt => truncation, regardless of tokenizer counts
+                    meta["guards"].append("full-repo prompt missing gold units (possible truncation): %s %s input=%d" % (label, r["item_id"], itok))
                 if extra.get("thinking_chars", 0) > 0:
                     meta["guards"].append("thinking leaked: %s %s %s" % (label, ck, r["item_id"]))
                 if itok and itok + (r.get("output_tokens") or 0) >= extra.get("num_ctx", 32768) - 64:

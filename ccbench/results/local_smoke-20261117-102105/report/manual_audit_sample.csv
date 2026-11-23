@@ -1,0 +1,116 @@
+job_key,item_id,model,strategy,budget,gold_answer,pred_answer,auto_correct,auto_error_class,raw_response,human_verdict,human_note
+572da382d7b851dd,L1-03,qwen2.5-coder-7b,none,,"""6.000""","""200.0""",False,missing_evidence,"```json
+{
+  ""answer"": ""200.0"",
+  ""evidence"": [],
+  ""explanation"": ""The function calculate_fee(200, 45) returns 200.0 because the second argument (45) is less than the default grace period of 60 days, and thus no fee is applied.""
+}
+```",,
+28e4b8c586ee2b5b,L1-01,qwen2.5-coder-7b,full,,"""2.60""","""2.60""",True,correct,"{
+  ""answer"": ""2.60"",
+  ""evidence"": [
+    ""frostline/pricing/strategies.py:32"",
+    ""frostline/pricing/strategies.py:33"",
+    ""frostline/pricing/strategies.py:34"",
+    ""frostline/pricing/strategies.py:37"",
+    ""frostline/pricing/strategies.py:38"",
+    ""frostline/pricing/strategies.py:40""
+  ],
+  ""explanation"": ""The TieredStrategy class defines a list of tiers with upper bounds and rates. For a chargeable weight of exactly 20 kg, it falls into the second tier, which has a rate of 2.60 per kg.""
+}",,
+68ce18be094cc442,L1-03,qwen2.5-coder-7b,bm25,4000,"""6.000""","""3.45""",False,use_failure,"{
+  ""answer"": ""3.45"",
+  ""evidence"": [""frostline/billing/fees.py:6-12""],
+  ""explanation"": ""The function calculate_fee(200, 45) calculates the late fee for an amount of 200 units with 45 days late, using the default rate of 0.015 and grace period of 10 days. The calculation results in a late fee of 3.45 units.""
+}",,
+5feaeb71e445679e,L1-01,qwen2.5-coder-7b,oracle,,"""2.60""","""2.60""",True,correct,"{
+  ""answer"": ""2.60"",
+  ""evidence"": [""frostline/pricing/strategies.py:31"", ""frostline/pricing/strategies.py:37-41""],
+  ""explanation"": ""The TieredStrategy class defines a list of tiers with upper bounds and rates. For a weight of 20 kg, it falls within the second tier (upper bound of 20 kg inclusive, rate of 2.60 per kg). The base_rate method iterates through these tiers and returns the rate for the first tier that includes the given weight.""
+}",,
+a410c7e3f0fba6ed,L1-02,qwen2.5-coder-7b,full,,"""5.5""","""2.2""",False,use_failure,"{
+  ""answer"": ""2.2"",
+  ""evidence"": [""frostline/domain/units.py:38"", ""frostline/domain/units.py:39"", ""frostline/domain/units.py:40"", ""frostline/domain/units.py:41""],
+  ""explanation"": ""The chargeable_weight function returns the larger of the actual weight and the volumetric weight, rounded up to the nearest 0.5 kg. For a parcel of 2.2 kg and dimensions 30x30x30 cm, the volumetric weight is 0.027 kg (30*30*30 / 5000). The actual weight is 2.2 kg, which is larger, so the function returns 2.2 kg.""
+}",,
+b829b1b987414dd1,L1-01,qwen2.5-coder-7b,bm25,4000,"""2.60""","""2.60""",True,correct,"{
+  ""answer"": ""2.60"",
+  ""evidence"": [""frostline/pricing/strategies.py:31-34""],
+  ""explanation"": ""The TieredStrategy class defines a list of tiers with rates per kg. For a chargeable weight of exactly 20 kg, it falls into the tier with a rate of 2.60 per kg.""
+}",,
+af0d6dda2358d7e4,L1-03,qwen3.5-9b,none,,"""6.000""",200,False,missing_evidence,"{""answer"": 200, ""evidence"": [""frostline/billing/fees.py:calculate_fee(200, 45)"", ""frostline/billing/fees.py:return amount""], ""explanation"": ""Since no code is provided for frostline/billing/fees.py, the function likely returns the first argument (amount) unchanged when default parameters are used, resulting in 200.""}",,
+a3b5203437d63af8,L1-01,qwen3.5-9b,bm25,4000,"""2.60""",2.6,True,correct,"{""answer"": 2.6, ""evidence"": [""frostline/pricing/strategies.py:33"", ""frostline/pricing/strategies.py:39""], ""explanation"": ""The TIERS list defines a rate of 2.60 for weights up to and including 20 kg (upper bound inclusive), so base_rate returns 2.60 when weight_kg is exactly 20.""}",,
+468243cac2d80178,L1-02,qwen2.5-coder-7b,oracle,,"""5.5""","""2.5""",False,use_failure,"{
+  ""answer"": ""2.5"",
+  ""evidence"": [""frostline/domain/units.py:38"", ""frostline/domain/units.py:39"", ""frostline/domain/units.py:40""],
+  ""explanation"": ""The actual weight is 2.2 kg and the volumetric weight is 2.16 kg (30*30*30 / 5000). The maximum of these two is 2.2 kg, which is then rounded up to the nearest 0.5 kg step, resulting in 2.5 kg.""
+}",,
+015cc81be8aaa2ab,L1-01,qwen3.5-9b,oracle,,"""2.60""",2.6,True,correct,"{""answer"": 2.6, ""evidence"": [""frostline/pricing/strategies.py:33"", ""frostline/pricing/strategies.py:39""], ""explanation"": ""The TIERS list defines a rate of 2.60 for weights up to and including 20 kg (line 33). The base_rate method returns the first matching tier's rate when weight_kg is less than or equal to the upper bound (line 39), so exactly 20 kg matches the second tier.""}",,
+adcf7bdf86f4b6a6,L1-02,qwen2.5-coder-7b,bm25,4000,"""5.5""","""2.2""",False,use_failure,"{
+  ""answer"": ""2.2"",
+  ""evidence"": [""frostline/domain/units.py:38"", ""frostline/domain/units.py:39"", ""frostline/domain/units.py:40""],
+  ""explanation"": ""The chargeable_weight function returns the maximum of the actual weight and the volumetric weight, rounded up to the nearest 0.5 kg. For a parcel of 2.2 kg, the volumetric weight is 0.2 kg (30*30*30 / 5000), so the function returns 2.2 kg.""
+}",,
+4813e846bb7cf3e7,L1-01,qwen3.5-9b,full,,"""2.60""",2.6,True,correct,"{""answer"": 2.6, ""evidence"": [""frostline/pricing/strategies.py:33"", ""frostline/pricing/strategies.py:39""], ""explanation"": ""The TIERS list defines (20, 2.60) as the second tier, and base_rate returns the rate for the first tier where weight_kg <= upper; since 20 kg satisfies weight_kg <= 20, it returns 2.60.""}",,
+4352e71ec6e022c9,L1-04,qwen2.5-coder-7b,oracle,,"""8.75""","""12.25""",False,use_failure,"{
+  ""answer"": ""12.25"",
+  ""evidence"": [""frostline/routing/fees.py:11"", ""frostline/routing/fees.py:12""],
+  ""explanation"": ""The function calculates the fee for a distance of 350 km. It first determines the billable distance by subtracting the toll-free kilometers (100 km) from the total distance (350 km), resulting in 250 km. Then, it multiplies the billable distance by the toll per kilometer (0.035) and rounds the result to two decimal places, resulting in 12.25.""
+}",,
+2dd2a78259abe941,L1-04,qwen2.5-coder-7b,full,,"""8.75""","""10.25""",False,use_failure,"{
+  ""answer"": ""10.25"",
+  ""evidence"": [""frostline/routing/fees.py:3"", ""frostline/routing/fees.py:5"", ""frostline/routing/fees.py:9"", ""frostline/routing/fees.py:10"", ""frostline/routing/fees.py:11"", ""frostline/routing/fees.py:12""],
+  ""explanation"": ""The function calculate_fee(350) calculates the toll fee for a route based on the distance in kilometers. The toll fee is calculated as the billable distance (distance_km - TOLL_FREE_KM) multiplied by the toll rate (TOLL_PER_KM). For a distance of 350 km, the billable distance is 340 km (350 - 100), and the toll fee is 340 * 0.035 = 11.9. The result is ",,
+beba4aa3a8b3bc0a,L1-02,qwen3.5-9b,oracle,,"""5.5""",2.5,False,use_failure,"{""answer"": 2.5, ""evidence"": [""frostline/domain/units.py:36"", ""frostline/domain/units.py:40""], ""explanation"": ""The actual weight is 2.2 kg and the volumetric weight is (30*30*30)/5000 = 5.4 kg, so max(2.2, 5.4) = 5.4 kg. Rounding 5.4 up to the nearest 0.5 step yields 5.5 kg.""}",,
+db2e76194a29cfac,L1-03,qwen2.5-coder-7b,full,,"""6.000""","""0.75""",False,use_failure,"{
+  ""answer"": ""0.75"",
+  ""evidence"": [""frostline/billing/fees.py:6"", ""frostline/billing/fees.py:7"", ""frostline/billing/fees.py:8"", ""frostline/billing/fees.py:9"", ""frostline/billing/fees.py:10"", ""frostline/billing/fees.py:11""],
+  ""explanation"": ""The function calculate_fee(200, 45) returns 0.75 with the default rate and grace period. This is because the overdue days (45 - 10) is 35, which is more than 30 days, so it calculates 1 period of late fee at the rate of 0.015, resulting in 0.75.""
+}",,
+67cc3d48c1e760c8,L1-02,qwen3.5-9b,full,,"""5.5""",2.2,False,use_failure,"{""answer"": 2.2, ""evidence"": [""frostline/domain/units.py:36"", ""frostline/domain/units.py:38"", ""frostline/domain/units.py:39""], ""explanation"": ""The function chargeable_weight compares the actual weight (2.2 kg) with the volumetric weight (0.054 kg for 30x30x30 cm), takes the maximum, and rounds up to the default step of 0.5 kg, resulting in 2.2 kg.""}",,
+e2ec9a1a48e95f12,L1-03,qwen3.5-9b,bm25,4000,"""6.000""",0.45,False,use_failure,"{""answer"": 0.45, ""evidence"": [""frostline/billing/fees.py:6"", ""frostline/billing/fees.py:8"", ""frostline/billing/fees.py:11""], ""explanation"": ""With default parameters (rate=0.015, grace_days=10), the function calculates overdue days as 35 (45 - 10), resulting in 2 periods of 30 days ((35 + 29) // 30 = 2). The fee is then 200 * 0.015 * 2 = 6.0, but wait, let me re-calculate: overdue=35, periods=(35+29)//30 = 64//30 = 2. Fee = 200 * 0.015 * 2 = 6.0. My previous mental math was wrong. Let's do it again carefully. overdue = 45 - 10 = 35. periods = (35 + 29) // 30 = 64 // 30 = 2. Fee = 200 * 0.015 * ",,
+e3a3b5bb2647032f,L1-03,qwen3.5-9b,oracle,,"""6.000""",3,False,use_failure,"{""answer"": 3, ""evidence"": [""frostline/billing/fees.py:8"", ""frostline/billing/fees.py:11""], ""explanation"": ""With default rate 0.015 and grace_days 10, overdue is 35 days, which spans one full 30-day period after the grace period, so the fee is 200 * 0.015 * 1 = 3.""}",,
+9ca83201bb547bb1,L1-02,qwen2.5-coder-7b,none,,"""5.5""","""2.2""",False,missing_evidence,"```json
+{
+  ""answer"": ""2.2"",
+  ""evidence"": [],
+  ""explanation"": ""The question does not provide any code or context from the frostline/domain/units.py file. Without access to the actual code, it's impossible to determine what the chargeable_weight function returns for the given parcel dimensions and weight. The answer is based on the weight provided in the question, assuming no additional logic or default values are applied.""
+}
+```",,
+45898d74c69d49c0,L1-04,qwen3.5-9b,oracle,,"""8.75""",5.25,False,use_failure,"{""answer"": 5.25, ""evidence"": [""frostline/routing/fees.py:5"", ""frostline/routing/fees.py:10-12""], ""explanation"": ""The function subtracts the free distance (100 km) from the input (350 km) to get 250 billable kilometers, then multiplies by the rate (0.035) and rounds to two decimal places, resulting in 5.25.""}",,
+a2dc239f5bd3a28e,L1-02,qwen3.5-9b,bm25,4000,"""5.5""",0.5,False,use_failure,"{""answer"": 0.5, ""evidence"": [""frostline/domain/units.py:36"", ""frostline/domain/units.py:39"", ""frostline/domain/units.py:40""], ""explanation"": ""The function calculates volumetric weight as (30*30*30)/5000 = 0.54 kg, which is less than the actual weight of 2.2 kg, so max(2.2, 0.54) = 2.2. This value is then rounded up to the nearest 0.5 step, resulting in 2.5 kg.""}",,
+24d1d06071d0ba2b,L1-03,qwen2.5-coder-7b,oracle,,"""6.000""","""13.50""",False,use_failure,"{
+  ""answer"": ""13.50"",
+  ""evidence"": [""frostline/billing/fees.py:6-12""],
+  ""explanation"": ""The function calculate_fee(200, 45) calculates the late fee based on the default rate of 1.5% and a grace period of 10 days. With 45 days late, the overdue period is 35 days. This results in 1 period of 30 days and an additional 5 days, which is rounded up to 1 period. The fee is then calculated as 200 * 0.015 * 1 = 3.00.""
+}",,
+dca40e62112ef8a4,L1-02,qwen3.5-9b,none,,"""5.5""",2.2,False,missing_evidence,"{""answer"": 2.2, ""evidence"": [""frostline/domain/units.py:chargeable_weight""], ""explanation"": ""Since no code was provided for frostline/domain/units.py, the answer is based on standard volumetric weight calculations where a 30x30x30 cm parcel (volume 27,000 cm³) typically yields a volumetric weight of 2.7 kg at a divisor of 5000, but without the actual code, the physical weight of 2.2 kg is returned if it exceeds the calculated volumetric weight or if the function defaults to the actual weight when volumetric weight is not higher.""",,
+e3afcd2d4ebb696e,L1-04,qwen3.5-9b,full,,"""8.75""",12.25,False,use_failure,"{""answer"": 12.25, ""evidence"": [""frostline/routing/fees.py:5"", ""frostline/routing/fees.py:9-12""], ""explanation"": ""The function subtracts 100 km (TOLL_FREE_KM) from the distance to get billable kilometers, then multiplies by TOLL_PER_KM (0.035) and rounds to two decimal places. For 350 km, this yields (350 - 100) * 0.035 = 8.75, but the code uses Decimal arithmetic which results in 12.25 due to a different interpretation of the constants or calculation steps shown in the provided context.""}",,
+59798dfee4118229,L1-01,qwen2.5-coder-7b,none,,"""2.60""","""10.0""",False,missing_evidence,"```json
+{
+  ""answer"": ""10.0"",
+  ""evidence"": [""frostline/pricing/strategies.py:12-15""],
+  ""explanation"": ""The TieredStrategy.base_rate method returns a rate of 10.0 per kg for weights between 15 and 25 kg, inclusive.""
+}
+```",,
+8c04598d4bcad51c,L1-03,qwen3.5-9b,full,,"""6.000""",4.5,False,use_failure,"{""answer"": 4.5, ""evidence"": [""frostline/billing/fees.py:6"", ""frostline/billing/fees.py:8"", ""frostline/billing/fees.py:11""], ""explanation"": ""With default rate=0.015 and grace_days=10, the overdue period is 35 days (45-10), which spans 2 full 30-day periods ((35+29)//30 = 2). The fee is 200 * 0.015 * 2 = 6.0, but wait—rechecking the math: overdue=35, periods=(35+29)//30=2, so 200*0.015*2=6.0. My initial quick mental math was wrong; let me recalculate carefully. overdue = 45 - 10 = 35. periods = (35 + 29) // 30 = 64 // 30 = 2. fee = 200 * 0.015 * 2 = 6.0. The answer is 6.0.""}",,
+98d85114fcc9ac31,L1-01,qwen3.5-9b,none,,"""2.60""",0,False,missing_evidence,"{""answer"": 0, ""evidence"": [""frostline/pricing/strategies.py:25""], ""explanation"": ""The TieredStrategy.base_rate method returns 0 for any chargeable weight less than or equal to 20 kg, so exactly 20 kg yields a rate of 0.""",,
+b6c7391dc8a2632c,L1-04,qwen2.5-coder-7b,bm25,4000,"""8.75""","""11.50""",False,use_failure,"{
+  ""answer"": ""11.50"",
+  ""evidence"": [""frostline/routing/fees.py:11"", ""frostline/routing/fees.py:12"", ""frostline/routing/fees.py:13""],
+  ""explanation"": ""The function calculate_fee(350) calculates the toll fee for a distance of 350 km. It first determines the billable distance by subtracting the toll-free kilometers (100 km) from the total distance (350 km), resulting in 250 km. It then calculates the fee by multiplying the billable distance by the toll per kilometer (0.035) and rounding the result to two decimal places, which gives 11.50.""
+}",,
+3bcb740b0ea6af30,L1-04,qwen3.5-9b,none,,"""8.75""",350,False,missing_evidence,"{
+  ""answer"": 350,
+  ""evidence"": [
+    ""frostline/routing/fees.py:calculate_fee(350)""
+  ],
+  ""explanation"": ""Since no repository code is provided for this question, I cannot determine the actual return value of calculate_fee(350) from the given context. However, based on typical fee calculation logic in such repositories, if there is no specific fee structure defined, it might default to returning the input amount or a fixed value. Without the code, the most reasonable assumption for a generic function without additional parameters is that it returns the input itself, but this is speculative.""",,
+1c9d1111aea50955,L1-04,qwen3.5-9b,bm25,4000,"""8.75""",10.5,False,use_failure,"{""answer"": 10.5, ""evidence"": [""frostline/routing/fees.py:5"", ""frostline/routing/fees.py:9-12""], ""explanation"": ""The function calculates toll fees where the first 100 km are free and the rate is 0.035 per km for distances beyond that. For a distance of 350 km, the billable distance is 250 km (350 - 100), resulting in a fee of 8.75, but wait, let me re-calculate: 250 * 0.035 = 8.75. My previous mental math was wrong. Let's do it again carefully. 350 - 100 = 250. 250 * 0.035 = 8.75. The answer is 8.75.""}",,
+f3095ce71f409eba,L1-04,qwen2.5-coder-7b,none,,"""8.75""","""350""",False,missing_evidence,"```json
+{
+  ""answer"": ""350"",
+  ""evidence"": [],
+  ""explanation"": ""The function calculate_fee(350) returns 350 because the function is not defined in the provided code snippet. Without the actual implementation of the function, it's impossible to determine the output.""
+}
+```",,
